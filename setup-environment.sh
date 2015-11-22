@@ -1,0 +1,42 @@
+#!/bin/bash
+script=$(readlink -f "$0")
+scriptpath=$(dirname "$script")
+source $scriptpath/config.sh
+
+previouspath=`pwd`
+cd $sourcepath/..
+sourcefolder=$(basename $sourcepath)
+tar -czf $softwarepath/cluster-install.tar.gz $sourcefolder -C ./software
+cd $previouspath
+
+
+for server in "${servers_cwp[@]}"
+do
+  echo ============server=$server user=$user============
+  ssh $user@$server rm -rf $targetpath 
+  scp $softwarepath/$sourcefolder.tar.gz $user@$server:$copypath
+  ssh $user@$server tar zxvf $copypath/$sourcefolder.tar.gz -C $copypath
+  ssh $user@$server rm -rf $copypath/$sourcefolder.tar.gz
+
+  ssh $user@$server sudo $targetpath/net-proxy.sh
+  ssh $user@$server $targetpath/setup-pdsh.sh
+done
+
+pdcp -R ssh -w $user@$servers ~/.ssh/authorized_keys ~/.ssh/
+pdcp -R ssh -w $user@$servers ~/.ssh/known_hosts ~/.ssh/
+
+pdcp -R ssh -w $user@$servers /etc/hosts ~/.ssh/
+pdsh -R ssh -w $user@$servers sudo mv ~/.ssh/hosts /etc
+
+pdsh -R ssh -w $user@$servers sudo  service iptables stop
+pdsh -R ssh -w $user@$servers sudo  service iptables save
+pdsh -R ssh -w $user@$servers sudo  chkconfig iptables off
+pdsh -R ssh -w $user@$servers sudo  service ip6tables stop
+pdsh -R ssh -w $user@$servers sudo  service ip6tables save
+pdsh -R ssh -w $user@$servers sudo  chkconfig ip6tables off
+
+pdsh -R ssh -w $user@$servers sudo mkdir -p $aapath
+pdsh -R ssh -w $user@$servers sudo chown -R $user:$user $aapath
+pdsh -R ssh -w $user@$servers sudo mkdir -p $aapath1
+pdsh -R ssh -w $user@$servers sudo chown -R $user:$user $aapath1
+
