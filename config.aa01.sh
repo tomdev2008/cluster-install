@@ -49,9 +49,9 @@ hadoop_folder=hadoop-2.7.1
 hadoop_jar=$hadoop_folder.tar.gz
 
 hadoop_hdfs_port=9000
-hadoop_data_dir=$aapath1/hadoop/hdfs
-hadoop_tmp_dir=$aapath1/hadoop/tmp
-hadoop_log_dir=$aapath1/hadoop/logs
+hadoop_data_dir=/home/$user/hadoop/hdfs
+hadoop_tmp_dir=/home/$user/hadoop/tmp
+hadoop_log_dir=/home/$user/hadoop/logs
 dfs_replication=2
 
 # ----------------------------------------
