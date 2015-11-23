@@ -24,7 +24,7 @@
 65 setup-shiny.sh
 
 #clone
-git clone git@github.com:xuxiangwen/$repository.git
+git clone git@github.com:xuxiangwen/cluster-install.git
 
 #push & pull
 git push origin master
