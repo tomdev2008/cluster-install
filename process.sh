@@ -9,7 +9,7 @@
     10.4 command-with-text.sh
     10.5 for-command.sh
 15 net-proxy.sh
-20 cluster-without-password.sh
+20 cluster-without-password.sh    
     20.1 without-password.sh
 30 setup-environment.sh
     30.1 setup-pdsh.sh
@@ -86,4 +86,3 @@ source ~/cluster/cluster-install/config.sh
 pdsh -R ssh -w $user@$servers sudo mkdir /opt/mount1/seals
 pdsh -R ssh -w $user@$servers sudo chown -R grid:grid /opt/mount1/seals
 
-.
