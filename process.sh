@@ -23,6 +23,8 @@
 60 setup-spark.sh
 65 setup-shiny.sh
 
+git push origin master
+
 export servers_test=aa02
 source ~/cluster/cluster-install/config.sh
 
