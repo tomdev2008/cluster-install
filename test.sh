@@ -13,3 +13,5 @@ server=aa01
   if [ $server != $master ]
   then  echo $server
   fi
+
+source ./test1.sh
