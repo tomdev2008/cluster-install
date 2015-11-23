@@ -14,7 +14,7 @@ if [ ! -d $aapath/$software_folder  ]
 then
   if [ ! -f $aapath/$software_jar ]
   then
-    echo $user@$master:$softwarepath/$software_jar $aapath
+    echo scp $user@$master:$softwarepath/$software_jar $aapath
     scp $user@$master:$softwarepath/$software_jar $aapath
   fi
   echo tar zxvf $aapath/$software_jar -C $aapath
