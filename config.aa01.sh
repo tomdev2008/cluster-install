@@ -11,6 +11,7 @@ master=aa01
 user=grid
 password=grid 
 aapath=/opt/mount1/aa
+aapath1=/opt/mount2/aa
 
 echo servers=$servers
 echo master=$master
@@ -67,9 +68,12 @@ echo
 echo ----------------------------------------
 echo hadoop
 echo ----------------------------------------
+hadoop_servers=$servers
+hadoop_master=$master
 hadoop_home=$aapath/hadoop
 hadoop_folder=hadoop-2.7.1
 hadoop_jar=$hadoop_folder.tar.gz
+
 
 hadoop_hdfs_port=9000
 hadoop_data_dir=/home/$user/hadoop/hdfs
@@ -77,6 +81,8 @@ hadoop_tmp_dir=/home/$user/hadoop/tmp
 hadoop_log_dir=/home/$user/hadoop/logs
 dfs_replication=2
 
+echo hadoop_servers=$hadoop_servers
+echo hadoop_master=$hadoop_master
 echo hadoop_home=$hadoop_home
 echo hadoop_folder=$hadoop_folder
 echo hadoop_jar=$hadoop_jar
@@ -91,6 +97,8 @@ echo
 echo ----------------------------------------
 echo spark
 echo ----------------------------------------
+spark_servers=$servers
+spark_master=$master
 spark_home=$aapath/spark
 spark_folder=spark-1.5.2-bin-hadoop2.6
 spark_jar=$spark_folder.tgz
@@ -99,6 +107,8 @@ spark_eventLog_dir=/var/log/spark
 spark_tmp_dir=$spark_tmp_dir
 spark_log_dir=/home/$user/spark/logs
 
+echo spark_servers=$spark_servers
+echo spark_master=$spark_master
 echo spark_home=$spark_home
 echo spark_folder=$spark_folder
 echo spark_jar=$spark_jar

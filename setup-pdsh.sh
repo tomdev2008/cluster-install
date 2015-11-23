@@ -9,7 +9,7 @@ then
   ll
   tar jxvf pdsh-2.29.tar.bz2
   cd pdsh-2.29
-  ./configure --with-ssh --with-rsh   
+  ./configure --with-ssh --with-rsh 
   make
   sudo make install
 fi

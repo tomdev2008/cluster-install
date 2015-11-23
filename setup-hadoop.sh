@@ -3,7 +3,7 @@ script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
 source $scriptpath/config.sh
 
-$scriptpath/software_untar.sh $hadoop_home $hadoop_folder $hadoop_jar
+$scriptpath/software-untar.sh $hadoop_home $hadoop_folder $hadoop_jar
 
 echo set hadoop folders: data, log, tmp
 mkdir -p $hadoop_log_dir

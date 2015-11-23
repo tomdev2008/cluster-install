@@ -3,7 +3,7 @@ script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
 source $scriptpath/config.sh
 
-$scriptpath/software_untar.sh $java_home $java_folder $java_jar
+$scriptpath/software-untar.sh $java_home $java_folder $java_jar
 
 echo 'set /etc/profile.d/java.sh'
 echo export JAVA_HOME=$java_home  > $targetpath/java.sh

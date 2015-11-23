@@ -12,7 +12,7 @@ then
 else
   echo $line
 fi
-done  < $scriptpath/config.sh
+done  < $scriptpath/config.`hostname`.sh
 
 
 
