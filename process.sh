@@ -23,7 +23,13 @@
 60 setup-spark.sh
 65 setup-shiny.sh
 
+#clone
+git clone git@github.com:xuxiangwen/$repository.git
+
+#push & pull
 git push origin master
+git pull origin master
+
 
 export servers_test=aa02
 source ~/cluster/cluster-install/config.sh
