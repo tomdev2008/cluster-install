@@ -14,4 +14,8 @@ server=aa01
   then  echo $server
   fi
 
-source ./test1.sh
+v1=abc
+var1=${1:-$v1}
+echo v1=$v1
+echo 1=$1
+echo var1=$var1
