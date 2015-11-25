@@ -6,8 +6,7 @@ source $scriptpath/config.sh
 if [ ! -e /usr/local/bin/sshpass ]
 then
   cd $targetpath/software
-  ll
-  tar jxvf sshpass-1.05.tar.gz
+  tar xvf sshpass-1.05.tar.gz
   cd sshpass-1.05
   ./configure  
   make
