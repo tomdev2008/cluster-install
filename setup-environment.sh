@@ -23,6 +23,8 @@ do
   ssh $user@$server $targetpath/setup-pdsh.sh
 done
 
+pdsh -R ssh -w $user@$servers $targetpath/setup-sshpass.sh 
+
 pdcp -R ssh -w $user@$servers ~/.ssh/authorized_keys ~/.ssh/
 pdcp -R ssh -w $user@$servers ~/.ssh/known_hosts ~/.ssh/
 

@@ -3,7 +3,7 @@ script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
 source $scriptpath/config.sh
 
-if [ ! -e /usr/local/bin/pdsh ]
+if [ ! -e /usr/local/bin/sshpass ]
 then
   cd $targetpath/software
   ll
