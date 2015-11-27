@@ -7,7 +7,8 @@ source $scriptpath/config.sh
 previouspath=`pwd`
 cd $sourcepath/..
 sourcefolder=$(basename $sourcepath)
-tar -czf $softwarepath/cluster-install.tar.gz $sourcefolder -C ./software
+tar -cf $softwarepath/cluster-install.tar $sourcefolder -C ./software
+tar --delete -f $softwarepath/cluster-install.tar   cluster-install/.git
 cd $previouspath
 
 
