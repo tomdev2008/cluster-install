@@ -4,6 +4,7 @@ scriptpath=$(dirname "$script")
 cp $scriptpath/config.`hostname`.sh $scriptpath/config.sh
 source $scriptpath/config.sh
 
+
 for server in "${servers_cwp[@]}"
 do
   echo $server 
