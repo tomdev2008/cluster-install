@@ -7,10 +7,10 @@ if [ ${servers_test:-""} != "" ]; then servers=$servers_test; fi
 declare -a servers_cwp=\(\"${servers//,/\" \"}\"\)
 
 master=c1t14285.itcs.hpicorp.net
-user=grid
-password=abc123@hp.com
-aapath=/opt/mount1/grid
-aapath1=/opt/mount2/grid
+user=xu6
+password=CDEszaq821202
+aapath=/home/xu6/grid
+aapath1=/home/xu6/grid
 
 # ----------------------------------------
 # cluster-environment and install
