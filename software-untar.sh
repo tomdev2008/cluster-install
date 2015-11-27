@@ -17,8 +17,8 @@ then
     echo scp $user@$master:$softwarepath/$software_jar $aapath
     scp $user@$master:$softwarepath/$software_jar $aapath
   fi
-  echo tar zxvf $aapath/$software_jar -C $aapath
-  tar zxvf $aapath/$software_jar -C $aapath
+  echo tar zxf $aapath/$software_jar -C $aapath
+  tar zxf $aapath/$software_jar -C $aapath
   echo rm -rf $aapath/$software_jar
   rm -rf $aapath/$software_jar
 fi
