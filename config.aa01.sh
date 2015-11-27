@@ -9,8 +9,8 @@ declare -a servers_cwp=\(\"${servers//,/\" \"}\"\)
 master=aa01
 user=grid
 password=grid
-aapath=/opt/mount1/grid
-aapath1=/opt/mount2/grid
+aapath=/opt/mount1/aa
+aapath1=/opt/mount2/aa
 
 # ----------------------------------------
 # cluster-environment and install
