@@ -1,21 +1,26 @@
 #Start/Stop Cluster:
 source ~/cluster/cluster-install/config.sh
 
-format namenode
+#format namenode
 hdfs namenode -format
 
-Start Hadoop
+#Start Hadoop
 start-dfs.sh
 start-yarn.sh
 jps
 hdfs dfsadmin -report
-or
+#or
 http://c1t14285.itcs.hpicorp.net:50070/dfshealth.html
 http://c1t14285.itcs.hpicorp.net:8088/cluster/nodes
 http://aa01:50070/dfshealth.html
 http://aa01:8088/cluster/nodes
 
-Testing Hadoop
+
+#Close Hadoop
+stop-yarn.sh
+stop-dfs.sh
+
+#Testing Hadoop
 hadoop fs -mkdir /input
 hadoop fs -put ~/cluster/cluster-install/*.sh /input
 hadoop fs -ls /input
@@ -25,42 +30,42 @@ hadoop fs -rm -r /output/wordcount
 yarn jar $hadoop_home/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /input /output/wordcount
 hadoop fs -cat /output/wordcount/*
 
-Start Spark
+#Start Spark
 $spark_home/sbin/start-all.sh
 jps
 http://aa01:8080
 http://c1t14285.itcs.hpicorp.net:8080
 
-Start Spark History Server
+#Start Spark History Server
 $spark_home/sbin/start-history-server.sh
 http://aa01:18080/
-
-Testing Spark
-spark-submit --master yarn --class org.apache.spark.examples.JavaWordCount $spark_home/lib/spark-examples-1.5.2-hadoop2.6.0.jar /input/config.sh
-spark-submit --master spark://$spark_master:7077 --class org.apache.spark.examples.JavaWordCount $spark_home/lib/spark-examples-1.5.2-hadoop2.6.0.jar /input/config.sh
+http://c1t14285.itcs.hpicorp.net:18080/
 
 
-Add Node to Spark Cluster
-nohup spark-class org.apache.spark.deploy.worker.Worker spark://$master:7077 &
-
-Dynamic Adding node:
-hadoop-daemon.sh start datanode
-yarn-daemons.sh  start nodemanager
-
-
-
-Close Hadoop
-stop-yarn.sh
-stop-dfs.sh
-
-Close Spark
+#Close Spark
 $spark_home/sbin/stop-all.sh
 jps
 
-stop Spark APP
+Stop Spark History Server
+$spark_home/sbin/stop-history-server.sh
+
+#Testing Spark
+spark-submit --master yarn --class org.apache.spark.examples.JavaWordCount $spark_home/lib/spark-examples-1.5.2-hadoop2.6.0.jar /input/config.sh
+spark-submit --master spark://$spark_master:7077 --class org.apache.spark.examples.JavaWordCount $spark_home/lib/spark-examples-1.5.2-hadoop2.6.0.jar /input/config.sh
+spark-submit --master spark://$spark_master:7077 --class org.apache.spark.examples.JavaWordCount $spark_home/lib/spark-examples-1.3.1-hadoop2.6.0.jar /input/config.sh
+
+
+#Add Node to Spark Cluster
+nohup spark-class org.apache.spark.deploy.worker.Worker spark://$master:7077 &
+
+#Dynamic Adding node:
+hadoop-daemon.sh start datanode
+yarn-daemons.sh  start nodemanager
+
+#stop Spark APP
 spark-class org.apache.spark.deploy.Client kill spark://$master:7077 app-20150302143620-0009
 
-Flume
+#Flume
 source ~/cluster-install/config.sh
 
 http://www.aboutyun.com/thread-8917-1-1.html
@@ -109,14 +114,11 @@ rm -rf /opt/mount1/seals/flume_test/logs/* ;for file in `ls /opt/mount1/seals/fl
 
 
 
-
-
-Clear DFS
+#Clear DFS
 if you need to reformat hadoop dfs, please run the script.
 make sure you have stop the hadoop cluster.
 ///  /home/grid/code/cleardfs.sh aa0[2,3,4,5,6]
 ///  /usr/hadoop/bin/hdfs namenode -format
-
 
 
 
