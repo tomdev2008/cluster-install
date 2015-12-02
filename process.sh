@@ -58,6 +58,12 @@ sudo ~/cluster/cluster-install/net-proxy.sh
 #if installing pdsh fails, try to install gcc first and then run setup-environment again
 ~/cluster/cluster-install/setup-yum-software.sh  gcc
 
+#33 同步时间
+pdsh -R ssh -w $user@$servers sudo cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+pdsh -R ssh -w $user@$servers sudo date $(wget -O - "http://www.timeapi.org/utc/in+four+hours" 2>/dev/null | sed s/[-T:+]/\ /g | awk '{print $2,$3,$4,$5,".",$6}' | tr -d " ")
+pdsh -R ssh -w $user@$servers sudo date
+
+
 #40 setup some basic development framework
 pdsh -R ssh -w $user@$servers $targetpath/setup-java.sh
 pdsh -R ssh -w $user@$servers $targetpath/setup-scala.sh
