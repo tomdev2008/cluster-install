@@ -65,6 +65,12 @@ yarn-daemons.sh  start nodemanager
 #stop Spark APP
 spark-class org.apache.spark.deploy.Client kill spark://$master:7077 app-20150302143620-0009
 
+#Start/Stop Zeppelin
+source ~/cluster/cluster-install/config.sh
+$aapath/incubator-zeppelin/bin/zeppelin-daemon.sh start
+$aapath/incubator-zeppelin/bin/zeppelin-daemon.sh stop
+
+
 #Flume
 source ~/cluster-install/config.sh
 

@@ -22,6 +22,8 @@
 55 setup-flume.sh
 60 setup-spark.sh
 65 setup-shiny.sh
+
+source ~/cluster/cluster-install/config.sh
   
 #clone
 git clone git@github.com:xuxiangwen/cluster-install.git
@@ -31,7 +33,6 @@ git push origin master
 git pull origin master
 
 export servers_test=aa02
-source ~/cluster/cluster-install/config.sh
 
 #00 start-stop.sh
 start-stop.sh
@@ -90,6 +91,9 @@ pdsh -R ssh -w $user@$flume_servers $flume_home/bin/flume-ng version
 pdsh -R ssh -w $user@$servers $targetpath/setup-spark.sh
 $spark_home/sbin/start-all.sh
 $spark_home/sbin/stop-all.sh
+
+$spark_home/sbin/start-history-server.sh
+$spark_home/sbin/stop-history-server.sh
 
 #shiny server
 nginxserver=
