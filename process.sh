@@ -37,6 +37,7 @@ source ~/cluster/cluster-install/config.sh
 start-stop.sh
 
 #05 before config.sh
+cp config.`hostname`.sh config.sh
 vim ~/cluster/cluster-install/before-config.sh
 ~/cluster/cluster-install/cluster-create-user.sh xu6 CDEszaq821202
 
