@@ -43,6 +43,7 @@ scala_jar=scala-2.10.4.tgz
 # hadoop
 # ----------------------------------------
 hadoop_servers=c1t14285.itcs.hpicorp.net,c1t14286.itcs.hpicorp.net,c1t14287.itcs.hpicorp.net,c1t14288.itcs.hpicorp.net
+hadoop_servers=$servers
 hadoop_master=c1t14285.itcs.hpicorp.net
 hadoop_home=$aapath/hadoop
 hadoop_folder=hadoop-2.7.1
@@ -58,6 +59,7 @@ dfs_replication=2
 # spark
 # ----------------------------------------
 spark_servers=c1t14285.itcs.hpicorp.net,c1t14286.itcs.hpicorp.net,c1t14287.itcs.hpicorp.net,c1t14288.itcs.hpicorp.net
+spark_servers=$servers
 spark_master=c1t14285.itcs.hpicorp.net
 spark_home=$aapath/spark
 spark_folder=spark-1.5.2-bin-hadoop2.6
