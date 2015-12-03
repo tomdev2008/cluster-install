@@ -14,7 +14,10 @@ for server in "${servers_cwp1[@]}"
 do
 #command1=\"$command\"
 echo ssh $user@$server $command
-tempCommand="echo $command >> $scriptpath/temp.sh; chmod 755 $scriptpath/temp.sh; $scriptpath/temp.sh; rm -rf $scriptpath/temp.sh"
+tempCommand="echo $command >> $scriptpath/temp.sh"
 ssh $user@$server $tempCommand
+ssh $user@$server chmod 755 $scriptpath/temp.sh
+ssh $user@$server $scriptpath/temp.sh
+ssh $user@$server rm -rf $scriptpath/temp.sh
 done
 
