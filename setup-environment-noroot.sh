@@ -18,7 +18,9 @@ do
   ssh $user@$server rm -rf $targetpath 
   scp $softwarepath/$sourcefolder.tar $user@$server:$copypath
   ssh $user@$server tar xf $copypath/$sourcefolder.tar -C $copypath
-  ssh $user@$server rm -rf $copypath/$sourcefolder.tar
+  ssh $user@$server rm -rf $copypath/$sourcefolder.tar  
+  scp $user@$servers ~/.ssh/authorized_keys ~/.ssh/
+  scp $user@$servers ~/.ssh/known_hosts ~/.ssh/  
 done
 
 
