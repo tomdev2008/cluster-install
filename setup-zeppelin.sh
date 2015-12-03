@@ -15,9 +15,14 @@ source $scriptpath/config.sh
 #cd $aapath/zeppelin-incubator
 
 oldpath=`pwd`
-cd $aapath
-git clone https://github.com/apache/incubator-zeppelin.git
-cd incubator-zeppelin
+
+if [ ! -d $aapath/incubator-zeppelin  ]
+then 
+  cd $aapath
+  git config --global http.proxy http://web-proxy.atl.hp.com:8080
+  git clone https://github.com/apache/incubator-zeppelin.git
+fi
+cd $aapath/incubator-zeppelin
 
 mvn clean package -DskipTests -Pspark-1.5 -Phadoop-2.6 
 cp conf/zeppelin-env.sh.template conf/zeppelin-env.sh
