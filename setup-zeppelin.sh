@@ -39,7 +39,7 @@ cd $aapath/incubator-zeppelin
 cp conf/zeppelin-env.sh.template conf/zeppelin-env.sh
 echo export MASTER=spark://$spark_master:7077                                 >> conf/zeppelin-env.sh
 echo export SPARK_HOME=$spark_home                                            >> conf/zeppelin-env.sh
-echo export SPARK_SUBMIT_OPTIONS="--driver-memory 512M --executor-memory 1G"  >> conf/zeppelin-env.sh
+echo export SPARK_SUBMIT_OPTIONS=\"--driver-memory 512M --executor-memory 1G\"  >> conf/zeppelin-env.sh
 echo export HADOOP_CONF_DIR==$hadoop_home/etc/hadoop                          >> conf/zeppelin-env.sh
 echo export ZEPPELIN_PORT=9090                                                >> conf/zeppelin-env.sh
 echo #export ZEPPELIN_JAVA_OPTS=""                                            >> conf/zeppelin-env.sh
