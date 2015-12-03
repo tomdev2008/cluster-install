@@ -20,15 +20,15 @@ git clone https://github.com/apache/incubator-zeppelin.git
 cd incubator-zeppelin
 
 mvn clean package -DskipTests -Pspark-1.5 -Phadoop-2.6 
-cp $aapath/zeppelin-incubator/conf/zeppelin-env.sh.template $aapath/zeppelin-incubator/conf/zeppelin-env.sh
-export MASTER=spark://$spark_master:7077
-export SPARK_HOME=$spark_home
-export SPARK_SUBMIT_OPTIONS="--driver-memory 512M --executor-memory 1G"
-export HADOOP_CONF_DIR==$hadoop_home/etc/hadoop
-export ZEPPELIN_PORT=9090
-#export ZEPPELIN_JAVA_OPTS=""
+cp conf/zeppelin-env.sh.template conf/zeppelin-env.sh
+echo export MASTER=spark://$spark_master:7077                                 >> conf/zeppelin-env.sh
+echo export SPARK_HOME=$spark_home                                            >> conf/zeppelin-env.sh
+echo export SPARK_SUBMIT_OPTIONS="--driver-memory 512M --executor-memory 1G"  >> conf/zeppelin-env.sh
+echo export HADOOP_CONF_DIR==$hadoop_home/etc/hadoop                          >> conf/zeppelin-env.sh
+echo export ZEPPELIN_PORT=9090                                                >> conf/zeppelin-env.sh
+echo #export ZEPPELIN_JAVA_OPTS=""                                            >> conf/zeppelin-env.sh
 
-cp $aapath/zeppelin-incubator/conf/zeppelin-site.xml.template $aapath/zeppelin-incubator/conf/zeppelin-site.xml
+cp conf/zeppelin-site.xml.template conf/zeppelin-site.xml
 
 cd $oldpath
 
