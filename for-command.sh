@@ -14,7 +14,7 @@ for server in "${servers_cwp1[@]}"
 do
 command1=\"$command\"
 echo ssh $user@$server eval $command1 
-ssh $user@$server eval $command1
+ssh -t $user@$server eval $command1
 #ssh $user@$server chmod 755 $scriptpath/temp.sh
 #ssh $user@$server $scriptpath/temp.sh
 #ssh $user@$server rm -rf $scriptpath/temp.sh

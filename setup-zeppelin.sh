@@ -27,6 +27,9 @@ cd $aapath
 #cd $aapath/incubator-zeppelin
 #mvn clean package -DskipTests -Pspark-1.5 -Phadoop-2.6 
 
+echo mkdir $zeppelin_notebook_dir
+mkdir -p $zeppelin_notebook_dir
+
 if [ ! -d $aapath/incubator-zeppelin  ]
 then 
   wget http://www.carfab.com/apachesoftware/incubator/zeppelin/0.5.5-incubating/zeppelin-0.5.5-incubating-bin-all.tgz
@@ -37,12 +40,13 @@ fi
 cd $aapath/incubator-zeppelin
 
 cp conf/zeppelin-env.sh.template conf/zeppelin-env.sh
-echo export MASTER=spark://$spark_master:7077                                 >> conf/zeppelin-env.sh
-echo export SPARK_HOME=$spark_home                                            >> conf/zeppelin-env.sh
+echo export MASTER=spark://$spark_master:7077                                   >> conf/zeppelin-env.sh
+echo export SPARK_HOME=$spark_home                                              >> conf/zeppelin-env.sh
 echo export SPARK_SUBMIT_OPTIONS=\"--driver-memory 512M --executor-memory 1G\"  >> conf/zeppelin-env.sh
-echo export HADOOP_CONF_DIR==$hadoop_home/etc/hadoop                          >> conf/zeppelin-env.sh
-echo export ZEPPELIN_PORT=9090                                                >> conf/zeppelin-env.sh
-echo #export ZEPPELIN_JAVA_OPTS=""                                            >> conf/zeppelin-env.sh
+echo export HADOOP_CONF_DIR==$hadoop_home/etc/hadoop                            >> conf/zeppelin-env.sh
+echo export ZEPPELIN_PORT=9090                                                  >> conf/zeppelin-env.sh
+echo export ZEPPELIN_NOTEBOOK_DIR=$zeppelin_notebook_dir                        >> conf/zeppelin-env.sh
+echo #export ZEPPELIN_JAVA_OPTS=""                                              >> conf/zeppelin-env.sh
 
 cp conf/zeppelin-site.xml.template conf/zeppelin-site.xml
 

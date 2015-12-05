@@ -75,6 +75,10 @@ flume_home=$aapath/flume
 flume_folder=apache-flume-1.6.0-bin
 flume_jar=$flume_folder.tar.gz
 
+# ----------------------------------------
+# Zeppelin
+# ----------------------------------------
+zeppelin_notebook_dir=/home/$user/zeppelin_notebook
 
 # ----------------------------------------
 
