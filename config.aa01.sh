@@ -43,7 +43,7 @@ scala_jar=scala-2.10.4.tgz
 # hadoop
 # ----------------------------------------
 hadoop_servers=$servers
-hadoop_master=master
+hadoop_master=$master
 hadoop_home=$aapath/hadoop
 hadoop_folder=hadoop-2.7.1
 hadoop_jar=$hadoop_folder.tar.gz
