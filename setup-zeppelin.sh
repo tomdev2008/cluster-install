@@ -1,10 +1,12 @@
 #!/bin/bash
 script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
+cp $scriptpath/config.`hostname`.sh $scriptpath/config.sh
 source $scriptpath/config.sh
 
 sudo yum install -y nodejs npm
 sudo npm install -g bower
+rm -rf ~/.bowerrc
 echo {                                                                 >> ~/.bowerrc
 echo       \"proxy\": \"http://web-proxy.atl.hp.com:8080\",            >> ~/.bowerrc
 echo       \"https-proxy\": \"http://web-proxy.atl.hp.com:8080\"       >> ~/.bowerrc
