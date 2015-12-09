@@ -95,6 +95,9 @@ $spark_home/sbin/stop-all.sh
 $spark_home/sbin/start-history-server.sh
 $spark_home/sbin/stop-history-server.sh
 
+#65 setup zeppelin
+~/cluster/cluster-install/setup-zeppelin.sh 
+
 #shiny server
 nginxserver=
 shinyserver=

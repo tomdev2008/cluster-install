@@ -44,3 +44,7 @@ pdsh -R ssh -w $user@$servers sudo chown -R $user:$user $aapath
 pdsh -R ssh -w $user@$servers sudo mkdir -p $aapath1
 pdsh -R ssh -w $user@$servers sudo chown -R $user:$user $aapath1
 
+#echo export SCALA_HOME=$CLUSTER_INSTALL
+#pdsh -R ssh -w $user@$servers echo export PATH='$PATH:$CLUSTER_INSTALL' >> /home/$user/.bashrc
+
+
