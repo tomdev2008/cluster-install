@@ -1,7 +1,7 @@
 #!/bin/bash
 script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
-source $scriptpath/config.sh
+source $scriptpath/config.`hostname`
 
 $scriptpath/software-untar.sh $spark_home $spark_folder $spark_jar
 
