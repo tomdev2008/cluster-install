@@ -23,7 +23,7 @@
 60 setup-spark.sh
 65 setup-shiny.sh
 
-source ~/cluster/cluster-install/config.sh
+source ~/cluster/cluster-install/config.`hostname`
   
 #clone
 git clone git@github.com:xuxiangwen/cluster-install.git
@@ -38,7 +38,7 @@ export servers_test=aa02
 start-stop.sh
 
 #05 before config.sh
-cp config.`hostname`.sh config.sh
+cp config.`hostname` config.sh
 vim ~/cluster/cluster-install/before-config.sh
 ~/cluster/cluster-install/cluster-create-user.sh xu6 CDEszaq821202
 
