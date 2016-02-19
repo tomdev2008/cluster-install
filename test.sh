@@ -5,7 +5,7 @@ echo $y
 echo servers=$servers
 script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
-source $scriptpath/config.sh
+source $scriptpath/config.`hostname`
 echo servers=$servers
 
 master=`hostname`
