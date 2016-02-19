@@ -1,8 +1,7 @@
 #!/bin/bash
 script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
-cp $scriptpath/config.`hostname`.sh $scriptpath/config.sh
-source $scriptpath/config.sh
+source $scriptpath/config.`hostname`
 
 previouspath=`pwd`
 cd $sourcepath/..
