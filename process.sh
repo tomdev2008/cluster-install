@@ -22,6 +22,8 @@
 55 setup-flume.sh
 60 setup-spark.sh
 65 setup-shiny.sh
+70 setup-zookeeper.sh
+75 setup-kafka.sh
 100 set-cluster-install-path.sh
 
 source ~/cluster/cluster-install/config.`hostname`
@@ -107,6 +109,14 @@ LF
 source ~/cluster/cluster-install/config.`hostname`
 pdsh -R ssh -w $user@$servers sudo mkdir /opt/mount1/seals
 pdsh -R ssh -w $user@$servers sudo chown -R grid:grid /opt/mount1/seals
+
+#70 setup-zookeeper.sh
+pdsh -R ssh -w $user@$servers $targetpath/setup-zookeeper.sh
+
+#75 setup kafka
+pdsh -R ssh -w $user@$servers $targetpath/setup-kafka.sh
+
+
 
 #100   set-cluster-install-path.sh
 #set cluster-install path in  Path(environment variable)
