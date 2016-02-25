@@ -36,7 +36,7 @@ echo set $dataDir/myid
 i=1
 for server in "${zookeeper_servers_cwp[@]}"
 do
-  if [ $server -eq $localHostName ]  
+  if [ $server = $localHostName ]  
   then 
     echo $i > $dataDir/myid
     break
