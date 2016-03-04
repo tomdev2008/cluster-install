@@ -113,6 +113,11 @@ pdsh -R ssh -w $user@$servers sudo chown -R grid:grid /opt/mount1/seals
 #70 setup-zookeeper.sh
 pdsh -R ssh -w $user@$servers $targetpath/setup-zookeeper.sh
 
+pdsh -R ssh -w $user@$servers $zookeeper_home/bin/zkServer.sh start
+pdsh -R ssh -w $user@$servers $zookeeper_home/bin/zkServer.sh status
+pdsh -R ssh -w $user@$servers $zookeeper_home/bin/zkServer.sh stop
+
+
 #75 setup kafka
 pdsh -R ssh -w $user@$servers $targetpath/setup-kafka.sh
 
