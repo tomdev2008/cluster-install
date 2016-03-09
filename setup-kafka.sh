@@ -46,7 +46,9 @@ sed -i "s/{zookeeper.connect}/$zookeeper_connect/g" $kafka_home/config/server.pr
 
 $scriptpath/command-with-text.sh " ls -l $kafka_home"
 $scriptpath/command-with-text.sh " ls -l $aapath | grep $kafka_folder"
-$scriptpath/command-with-text.sh " cat $kafka_home/config/server.properties"
+$scriptpath/command-with-text.sh " cat $kafka_home/config/server.properties | grep broker.id" 
+$scriptpath/command-with-text.sh " cat $kafka_home/config/server.properties | grep log.dirs" 
+$scriptpath/command-with-text.sh " cat $kafka_home/config/server.properties | grep zookeeper.connect" 
 
 echo setup kafka is finished on `hostname`
 
