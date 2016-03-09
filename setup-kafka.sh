@@ -9,7 +9,7 @@ echo mkdir $kafka_log_dir
 mkdir -p $kafka_log_dir
 
 echo set $kafka_home/conf/server.properties
-cp $scriptpath/kafka/server.properties $kafka_home/conf/server.properties
+cp $scriptpath/kafka/server.properties $kafka_home/config/server.properties
 
 
 localHostName=`hostname`
@@ -30,7 +30,7 @@ declare -a zookeeper_servers_cwp=\(\"${zookeeper_servers//,/\" \"}\"\)
 i=1
 for server in "${zookeeper_servers_cwp[@]}"
 do
-if [ $i eq 1 ] 
+if [ $i -eq 1 ] 
 then
   zookeeper_connect=${server}:${zookeeper_port}  
 else
@@ -39,9 +39,9 @@ fi
 let i++                   
 done
 
-sed -i "s/{broker.id}/$broker_id/g" $kafka_home/conf/server.properties
-sed -i "s/{log.dirs}/$kafka_log_dir/g" $kafka_home/conf/server.properties
-sed -i "s/{zookeeper.connect}/$zookeeper_connect/g" $kafka_home/conf/server.properties
+sed -i "s/{broker.id}/$broker_id/g" $kafka_home/config/server.properties
+sed -i "s/{log.dirs}/$kafka_log_dir/g" $kafka_home/config/server.properties
+sed -i "s/{zookeeper.connect}/$zookeeper_connect/g" $kafka_home/config/server.properties
 
 
 $scriptpath/command-with-text.sh " ls -l $kafka_home"
