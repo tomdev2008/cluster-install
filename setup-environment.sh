@@ -17,7 +17,7 @@ do
   ssh $user@$server rm -rf $targetpath 
   scp $softwarepath/$sourcefolder.tar $user@$server:$copypath
   ssh $user@$server tar xf $copypath/$sourcefolder.tar -C $copypath
-  scp $user@$server cp $targetpath/config.`hostname`  $targetpath/config.$server
+  ssh $user@$server mv $targetpath/config.`hostname`  $targetpath/config.$server
   ssh $user@$server rm -rf $copypath/$sourcefolder.tar
 
   ssh $user@$server sudo $targetpath/net-proxy.sh
