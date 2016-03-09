@@ -9,21 +9,25 @@ echo mkdir $kafka_log_dir
 mkdir -p $kafka_log_dir
 
 echo set $kafka_home/conf/server.properties
-i=1
+cp $scriptpath/kafka/server.properties $kafka_home/conf/server.properties
+
+
+localHostName=`hostname`
+broker_id=0
 declare -a kafka_servers_cwp=\(\"${kafka_servers//,/\" \"}\"\)
+i=1
 for server in "${kafka_servers_cwp[@]}"
 do
-echo broker.id=${i}                        > $kafka_home/conf/server.properties
-let i++
+  if [ $server = $localHostName ]  
+  then 
+    broker_id=$i
+    break
+  fi
+  let i++
 done
 
-echo num.network.threads=3                  >> $kafka_home/conf/server.properties
-echo num.io.threads=8                       >> $kafka_home/conf/server.properties
-echo num.partitions=2                       >> $kafka_home/conf/server.properties
-echo log.dirs=$kafka_log_dir                >> $kafka_home/conf/server.properties
-
-i=1
 declare -a zookeeper_servers_cwp=\(\"${zookeeper_servers//,/\" \"}\"\)
+i=1
 for server in "${zookeeper_servers_cwp[@]}"
 do
 if [ $i eq 1 ] 
@@ -34,7 +38,10 @@ else
 fi  
 let i++                   
 done
-echo zookeeper.connect=${zookeeper_connect} >> $kafka_home/conf/server.properties
+
+sed -i "s/{broker.id}/$broker_id/g" $kafka_home/conf/server.properties
+sed -i "s/{log.dirs}/$kafka_log_dir/g" $kafka_home/conf/server.properties
+sed -i "s/{zookeeper.connect}/$zookeeper_connect/g" $kafka_home/conf/server.properties
 
 
 $scriptpath/command-with-text.sh " ls -l $kafka_home"
