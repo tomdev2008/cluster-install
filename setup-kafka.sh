@@ -39,8 +39,8 @@ fi
 let i++                   
 done
 
-sed -i "s/{broker.id}/$broker_id/g" $kafka_home/config/server.properties
-sed -i "s/{log.dirs}/$kafka_log_dir/g" $kafka_home/config/server.properties
+sed -i "s/{broker.id}/$broker_id/g"      $kafka_home/config/server.properties
+sed -i "s/{log.dirs}/$kafka_log_dir/g"   $kafka_home/config/server.properties
 sed -i "s/{zookeeper.connect}/$zookeeper_connect/g" $kafka_home/config/server.properties
 
 
