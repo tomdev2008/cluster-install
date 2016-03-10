@@ -121,8 +121,17 @@ pdsh -R ssh -w $user@$zookeeper_servers $zookeeper_home/bin/zkServer.sh stop
 #75 setup kafka http://www.cnblogs.com/oftenlin/p/4047504.html
 pdsh -R ssh -w $user@$kafka_servers $targetpath/setup-kafka.sh
 
-pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-start.sh $kafka_home/config/server.properties 
+pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-start.sh $kafka_home/config/server.properties &
+pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-stop.sh $kafka_home/config/server.properties
 
+#create topic
+$kafka_home/bin/kafka-topics.sh --zookeeper $zookeeper_connect --topic mytopic --replication-factor 1 --partitions 1 --create
+#list topic
+$kafka_home/bin/kafka-topics.sh --list --zookeeper $zookeeper_connect
+#generate message
+$kafka_home/bin/kafka-console-producer.sh --broker-list $kafka_connect --topic mytopic
+#get message 
+$kafka_home/bin/kafka-console-consumer.sh --zookeeper $zookeeper_connect --topic mytopic --from-beginning
 
 #100   set-cluster-install-path.sh
 #set cluster-install path in  Path(environment variable)
