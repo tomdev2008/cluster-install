@@ -26,19 +26,6 @@ do
   let i++
 done
 
-declare -a zookeeper_servers_cwp=\(\"${zookeeper_servers//,/\" \"}\"\)
-i=1
-for server in "${zookeeper_servers_cwp[@]}"
-do
-if [ $i -eq 1 ] 
-then
-  zookeeper_connect=${server}:${zookeeper_port}  
-else
-  zookeeper_connect=${zookeeper_connect},${server}:${zookeeper_port}   
-fi  
-let i++                   
-done
-
 sed -i "s/{broker.id}/$broker_id/g"      $kafka_home/config/server.properties
 log_dirs=${kafka_log_dir//\//\\\/}
 sed -i "s/{log.dirs}/$log_dirs/g" $kafka_home/config/server.properties

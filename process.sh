@@ -118,9 +118,10 @@ pdsh -R ssh -w $user@$zookeeper_servers $zookeeper_home/bin/zkServer.sh status
 pdsh -R ssh -w $user@$zookeeper_servers $zookeeper_home/bin/zkServer.sh stop
 
 
-#75 setup kafka
-pdsh -R ssh -w $user@$servers $targetpath/setup-kafka.sh
+#75 setup kafka http://www.cnblogs.com/oftenlin/p/4047504.html
+pdsh -R ssh -w $user@$kafka_servers $targetpath/setup-kafka.sh
 
+pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-start.sh $kafka_home/config/server.properties 
 
 
 #100   set-cluster-install-path.sh

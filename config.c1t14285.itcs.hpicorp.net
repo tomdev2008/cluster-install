@@ -91,6 +91,21 @@ zookeeper_home=$aapath/zookeeper
 zookeeper_folder=zookeeper-3.4.6
 zookeeper_jar=$zookeeper_folder.tar.gz
 
+declare -a zookeeper_servers_cwp=\(\"${zookeeper_servers//,/\" \"}\"\)
+i=1
+for server in "${zookeeper_servers_cwp[@]}"
+do
+if [ $i -eq 1 ] 
+then
+  zookeeper_connect=${server}:${zookeeper_port}  
+else
+  zookeeper_connect=${zookeeper_connect},${server}:${zookeeper_port}   
+fi  
+let i++                   
+done
+
+zookeeper_connect=$zookeeper_connect
+
 # ----------------------------------------
 # kafka
 # ----------------------------------------
