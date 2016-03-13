@@ -5,6 +5,7 @@ source $scriptpath/config.`hostname`
 
 previouspath=`pwd`
 cd $sourcepath/..
+mkdir -p ./software
 sourcefolder=$(basename $sourcepath)
 tar -cf $softwarepath/cluster-install.tar $sourcefolder -C ./software
 tar --delete -f $softwarepath/cluster-install.tar   cluster-install/.git
