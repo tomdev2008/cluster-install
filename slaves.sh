@@ -10,6 +10,11 @@ servers1=${3:-$servers}
 declare -a servers_cwp1=\(\"${servers1//,/\" \"}\"\)
 
 rm -rf $slaves
+
+if [ master1=servers1 ] 
+then
+  echo $master1 >> $slaves
+fi
 for server in "${servers_cwp1[@]}"
 do
   if [ $server != $master1 ]
