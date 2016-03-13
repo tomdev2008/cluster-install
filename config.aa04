@@ -29,8 +29,8 @@ shinypath=$aapath/shinyapp
 # java
 # ----------------------------------------
 java_home=$aapath/java
-java_folder=jdk1.7.0_72
-java_jar=jdk-7u72-linux-x64.gz
+java_folder=jdk1.7.0_79
+java_jar=jdk-7u79-linux-x64.gz
 
 # ----------------------------------------
 # scala
