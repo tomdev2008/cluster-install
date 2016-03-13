@@ -1,5 +1,5 @@
 #Start/Stop Cluster:
-source ~/cluster/cluster-install/config.sh
+source ~/cluster/cluster-install/config.`hostname`
 
 #format namenode
 hdfs namenode -format
