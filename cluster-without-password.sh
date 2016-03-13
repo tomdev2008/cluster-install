@@ -1,9 +1,7 @@
 #!/bin/bash
 script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
-cp $scriptpath/config.`hostname` $scriptpath/config.sh
 source $scriptpath/config.`hostname`
-
 
 for server in "${servers_cwp[@]}"
 do
