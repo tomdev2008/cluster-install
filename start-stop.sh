@@ -21,13 +21,13 @@ stop-yarn.sh
 stop-dfs.sh
 
 #Testing Hadoop
-hadoop fs -mkdir /input
+hadoop fs -mkdir -p /input
 hadoop fs -put ~/cluster/cluster-install/*.sh /input
 hadoop fs -ls /input
 
-hadoop fs -mkdir /output
+hadoop fs -mkdir -p /output
 hadoop fs -rm -r /output/wordcount
-yarn jar $hadoop_home/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /input /output/wordcount
+yarn jar $hadoop_home/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /input /output/wordcount
 hadoop fs -cat /output/wordcount/*
 
 #Start Spark
