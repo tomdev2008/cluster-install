@@ -32,6 +32,24 @@ source ~/cluster/cluster-install/config.`hostname`
 if [ ! -f ~/.ssh/id_rsa ] ; then ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa;fi; cat ~/.ssh/id_rsa.pub
 echo ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIB5VkViP9huenvC8oG54F06DQn4dszbAQTO/8eAWWFI5CogeLC58MNPQ4LoqPy0Nfss1UmR7mGAq54E1C5f3R9giW3EeDPbHoP9oAiFx5iB+NM0stg4yQnC2YSTOi5Gq54ZQz1VySAkKlpSxBs2HAxnmOhQA3cebNaUrXDLFH/GTw== xu63 >>  ~/.ssh/authorized_keys
 chmod  600 ~/.ssh/authorized_keys
+
+#Add a user into sudo list(增加用户到sudo列表中)
+visudo
+grid    ALL=(ALL)       NOPASSWD: ALL
+
+#关闭防火墙
+sudo  service iptables stop
+sudo  service iptables save
+sudo  chkconfig iptables off
+sudo  service ip6tables stop
+sudo  service ip6tables save
+sudo  chkconfig ip6tables off
+
+#tigervnc
+sudo yum install tigervnc  -y
+sudo yum install tigervnc-server -y
+vncserver :1
+vncserver -list
   
 #git clone  
 sudo yum install git 
@@ -50,7 +68,6 @@ export servers_test=aa02
 start-stop.sh
 
 #05 before config.sh
-cp config.`hostname` config.sh
 vim ~/cluster/cluster-install/before-config.sh
 ~/cluster/cluster-install/cluster-create-user.sh xu6 CDEszaq821202
 
