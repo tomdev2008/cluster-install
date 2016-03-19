@@ -40,6 +40,13 @@ scala_folder=scala-2.10.4
 scala_jar=scala-2.10.4.tgz
 
 # ----------------------------------------
+# python
+# ----------------------------------------
+python_home=$aapath/scala
+python_folder=Python-3.2.6
+python_jar=Python-3.2.6.tgz
+
+# ----------------------------------------
 # hadoop
 # ----------------------------------------
 hadoop_servers=$servers

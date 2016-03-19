@@ -17,7 +17,8 @@
 33 software_untar.sh
 40 setup-java.sh
 41 setup-scala.sh
-42 slaves.sh
+42 setup-python.sh
+48 slaves.sh
 50 setup-hadoop.sh
 55 setup-flume.sh
 60 setup-spark.sh
@@ -27,6 +28,7 @@
 100 set-cluster-install-path.sh
 
 source ~/cluster/cluster-install/config.`hostname`
+source ~/cluster-install/config.`hostname`
   
 export servers_test=aa02
 
@@ -63,6 +65,7 @@ pdsh -R ssh -w $user@$servers sudo date
 #40 setup some basic development framework
 pdsh -R ssh -w $user@$servers $targetpath/setup-java.sh
 pdsh -R ssh -w $user@$servers $targetpath/setup-scala.sh
+pdsh -R ssh -w $user@$servers $targetpath/setup-python.sh
 
 #45 clear software
 pdsh -R ssh -w $user@$servers rm -rf $aapath/$hadoop_folder
@@ -117,13 +120,14 @@ pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-start.sh $kafka
 pdsh -R ssh -w $user@$kafka_servers $kafka_home/bin/kafka-server-stop.sh $kafka_home/config/server.properties
 
 #create topic
-$kafka_home/bin/kafka-topics.sh --zookeeper $zookeeper_connect --topic mytopic --replication-factor 1 --partitions 1 --create
+$kafka_home/bin/kafka-topics.sh --zookeeper $zookeeper_connect --topic test --replication-factor 2 --partitions 3 --create
+$kafka_home/bin/kafka-topics.sh --describe --zookeeper $zookeeper_connect --topic test 
 #list topic
 $kafka_home/bin/kafka-topics.sh --list --zookeeper $zookeeper_connect
 #generate message
-$kafka_home/bin/kafka-console-producer.sh --broker-list $kafka_connect --topic mytopic
+$kafka_home/bin/kafka-console-producer.sh --broker-list $kafka_connect --topic test
 #get message 
-$kafka_home/bin/kafka-console-consumer.sh --zookeeper $zookeeper_connect --topic mytopic --from-beginning
+$kafka_home/bin/kafka-console-consumer.sh --zookeeper $zookeeper_connect --topic test --from-beginning
 
 #100   set-cluster-install-path.sh
 #set cluster-install path in  Path(environment variable)
