@@ -21,6 +21,15 @@ targetpath=$copypath/cluster-install
 softwarepath=/home/$user/cluster/software
 
 # ----------------------------------------
+# net proxy
+# ----------------------------------------
+http_proxy=
+https_proxy=
+#http_proxy=http://web-proxy.atl.hp.com:8080
+#https_proxy=http://web-proxy.atl.hp.com:8080
+
+
+# ----------------------------------------
 # shiny
 # ----------------------------------------
 shinypath=$aapath/shinyapp
