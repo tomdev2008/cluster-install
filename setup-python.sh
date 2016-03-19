@@ -3,14 +3,11 @@ script=$(readlink -f "$0")
 scriptpath=$(dirname "$script")
 source $scriptpath/config.`hostname`
 
+$scriptpath/software-untar.sh $scala_home $scala_folder $scala_jar
 
 if [ ! -e /usr/local/bin/python ]
 then
-  cd $targetpath/software
-  ll
-  sudo rm -rf $targetpath/software/$python_folder
-  tar zxvf $python_jar
-  cd $python_folder
+  cd $aapath/python
   ./configure
   make
   sudo make install
