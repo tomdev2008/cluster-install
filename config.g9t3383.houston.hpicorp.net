@@ -42,7 +42,7 @@ scala_jar=scala-2.10.4.tgz
 # ----------------------------------------
 # python
 # ----------------------------------------
-python_home=$aapath/scala
+python_home=$aapath/python
 python_folder=Python-3.2.6
 python_jar=Python-3.2.6.tgz
 
