@@ -73,7 +73,7 @@ dfs_replication=2
 spark_servers=$servers
 spark_master=$master
 spark_home=$aapath/spark
-spark_folder=spark-1.5.2-bin-hadoop2.6
+spark_folder=spark-1.6.1-bin-hadoop2.6
 spark_jar=$spark_folder.tgz
 
 spark_eventLog_dir=/var/log/spark
