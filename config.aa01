@@ -70,7 +70,7 @@ dfs_replication=2
 # ----------------------------------------
 # spark
 # ----------------------------------------
-spark_servers=aa02,aa03
+spark_servers=$servers
 spark_master=$master
 spark_home=$aapath/spark
 spark_folder=spark-1.6.1-bin-hadoop2.6
