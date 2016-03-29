@@ -40,8 +40,8 @@ $scriptpath/command-with-text.sh " ls -l $spark_home"
 $scriptpath/command-with-text.sh " ls -l $aapath | grep $spark_folder"
 $scriptpath/command-with-text.sh " cat /etc/profile.d/spark.sh"
 
-$scriptpath/command-with-text.sh " cat $spark_home/conf/spark-env.sh"
-$scriptpath/command-with-text.sh " cat $spark_home/conf/spark-defaults.conf "
+#$scriptpath/command-with-text.sh " cat $spark_home/conf/spark-env.sh"
+#$scriptpath/command-with-text.sh " cat $spark_home/conf/spark-defaults.conf "
 $scriptpath/command-with-text.sh " cat $spark_home/conf/slaves "
 
 echo setup spark is finished on `hostname`
