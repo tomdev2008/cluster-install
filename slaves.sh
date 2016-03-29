@@ -11,7 +11,7 @@ declare -a servers_cwp1=\(\"${servers1//,/\" \"}\"\)
 
 rm -rf $slaves
 
-if [ master1=servers1 ] 
+if [ $master1=$servers1 ] 
 then
   echo $master1 >> $slaves
 fi
