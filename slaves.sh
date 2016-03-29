@@ -17,6 +17,7 @@ then
 fi
 for server in "${servers_cwp1[@]}"
 do
+  echo if [ $server != $master1 ]
   if [ $server != $master1 ]
   then
     echo $server >> $slaves
