@@ -5,7 +5,7 @@ source $scriptpath/config.`hostname`
 
 $scriptpath/software-untar.sh $spark_home $spark_folder $spark_jar
 
-echo set $spark_home/conf/slaves $spark_master $spark_servers
+echo $scriptpath/slaves.sh $spark_home/conf/slaves $spark_master $spark_servers
 $scriptpath/slaves.sh $spark_home/conf/slaves $spark_master $spark_servers
 
 echo mkdir $spark_log_dir
